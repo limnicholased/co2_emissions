@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.22.1"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.2.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.20.8"></script>
+  <style>.main {
+    width: 1200px;
+    background-color: white;
+    margin: auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 50px;
+    padding-top: 35px;
+  }</style>
+</head>
+
+<body>
+  <div id = "main">
+    <div id="map">
+      <script>
+        const spec1 = {
+          "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+          "title": "Global CO2 Emissions from 1860 to 2022",
+          "width": 800,
+          "height": 400,
+          "projection": { "type": "equalEarth" },
+          "params": [
+            {
+              "name": "Year_selection",
+              "value": 2020,
+              "bind": {
+                "input": "range",
+                "min": 1860,
+                "max": 2020,
+                "step": 1,
+                "name": "Select Year: "
+              }
+            }
+          ],
+          "layer": [
+            {
+              "data": {
+                "url": "https://raw.githubusercontent.com/limnicholased/co2_emissions/main/ne_110m_admin_0_countries.topojson",
+                "format": { "type": "topojson", "feature": "ne_110m_admin_0_countries" }
+              },
+              "mark": { "type": "geoshape", "fill": "lightgray", "stroke": "white" }
+            },
+            {
+              "data": {
+                "url": "https://raw.githubusercontent.com/limnicholased/co2_emissions/main/co2_emissions_map_data.csv"
+              },
+              "transform": [
+                {
+                  "lookup": "country",
+                  "from": {
+                    "data": {
+                      "url": "https://raw.githubusercontent.com/limnicholased/co2_emissions/main/ne_110m_admin_0_countries.topojson",
+                      "format": {
+                        "type": "topojson",
+                        "feature": "ne_110m_admin_0_countries"
+                      }
+                    },
+                    "key": "properties.NAME"
+                  },
+                  "as": "geo"
+                },
+                { "filter": "datum.year == Year_selection" }
+              ],
+              "mark": { "type": "geoshape" },
+              "encoding": {
+                "shape": { "field": "geo", "type": "geojson" },
+                "color": {
+                  "field": "co2_per_capita",
+                  "type": "quantitative",
+                  "scale": {
+                    "type": "threshold",
+                    "domain": [0, 1.5, 4.5],
+                    "range": ["#fdbe85", "#fd8d3c", "#e6550d", "#a63603"]
+                  },
+                  "title": "CO2 Emissions (Tonnes/Capita)"
+                },
+                "tooltip": [
+                  { "field": "country", "type": "nominal", "title": "Country" },
+                  {
+                    "field": "co2_per_capita",
+                    "type": "quantitative",
+                    "title": "CO2 Emissions (Tonnes/Capita)"
+                  }
+                ]
+              }
+            }
+          ],
+          "config": {}
+        };
+        vegaEmbed("#map", spec1, { mode: "vega-lite" }).then(console.log).catch(console.warn);
+      </script>
+    </div>
+    <div id="co2_pie_chart">
+      <script>
+        const spec2 = {
+          "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+          "title": "Australian C02 Production Sources from 1860 to 2020",
+          "data": {
+            "url": "https://raw.githubusercontent.com/limnicholased/co2_emissions/main/aus_co2_sources.csv"
+          },
+          "width": "800",
+          "height": 400,
+          "params": [
+            {
+              "name": "Year_selection",
+              "value": 2020,
+              "bind": {
+                "input": "range",
+                "min": 1860,
+                "max": 2020,
+                "step": 1,
+                "name": "Select Year: "
+              }
+            }
+          ],
+          "transform": [{ "filter": "datum.year == Year_selection" }],
+          "encoding": {
+            "theta": {
+              "field": "mass",
+              "type": "quantitative",
+              "stack": true,
+              "title": "CO2 Mass (Megatonnes)"
+            },
+            "color": {
+              "field": "co2_source",
+              "type": "nominal",
+              "title": "CO2 Source (Production)"
+            }
+          },
+          "layer": [
+            { "mark": { "type": "arc", "outerRadius": 130, "tooltip": true } },
+            {
+              "mark": { "type": "text", "radius": 160 },
+              "encoding": { "text": { "field": "co2_source", "type": "nominal" } }
+            },
+            {
+              "mark": {
+                "type": "text",
+                "align": "center",
+                "dx": -160,
+                "dy": -342,
+                "fill": "#f58519"
+              },
+              "encoding": {
+                "x": { "value": "width" },
+                "y": { "value": "height" },
+                "text": {
+                  "value": "Coal is Australia's primary contributor of CO2 Production"
+                }
+              }
+            }
+          ],
+          "config": {}
+        };
+        vegaEmbed("#co2_pie_chart", spec2, { mode: "vega-lite" }).then(console.log).catch(console.warn);
+      </script>
+    </div>
+  </div>
+</body>
+
+</html>

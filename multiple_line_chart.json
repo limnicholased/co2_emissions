@@ -6,6 +6,7 @@
   "title": "Australian Sources of CO2 Production from 1860 to 2020",
   "width": 560,
   "height": 400,
+  "background": "#d0fbdb",
   "encoding": {"x": {"field": "year", "type": "temporal", "title": "Year"}},
   "layer": [
     {

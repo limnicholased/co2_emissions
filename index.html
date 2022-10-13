@@ -241,7 +241,6 @@
               In the figure on the right, we can see that Australia, as part of Oceania,
               has made been <FONT COLOR="#54ff9e">competitive</FONT> in reducing its <a class="red">CO2</a> emissions over time.
               This is promising for Australia as it promotes itself as a global ambassador for <FONT COLOR="#54ff9e">'greenness'</FONT>.
-
             </p>
             </div>
           </div>
@@ -270,27 +269,27 @@
       var bar_chart = "bar_chart.json";
       var heat_map = "heat_map.json";
 
-      vegaEmbed("#map", map)
+      vegaEmbed("#map", map, {"actions": false})
         .then(function (result) {})
         .catch(console.error);
 
-      vegaEmbed("#ghg_pie_chart", ghg_pie_chart)
+      vegaEmbed("#ghg_pie_chart", ghg_pie_chart, {"actions": false})
         .then(function (result) {})
         .catch(console.error);
 
-      vegaEmbed("#co2_pie_chart", co2_pie_chart)
+      vegaEmbed("#co2_pie_chart", co2_pie_chart, {"actions": false})
         .then(function (result) {})
         .catch(console.error);
 
-      vegaEmbed("#multiple_line_chart", multiple_line_chart)
+      vegaEmbed("#multiple_line_chart", multiple_line_chart, {"actions": false})
         .then(function (result) {})
         .catch(console.error);
 
-      vegaEmbed("#bar_chart", bar_chart)
+      vegaEmbed("#bar_chart", bar_chart, {"actions": false})
         .then(function (result) {})
         .catch(console.error);
 
-      vegaEmbed("#heat_map", heat_map)
+      vegaEmbed("#heat_map", heat_map, {"actions": false})
         .then(function (result) {})
         .catch(console.error);
     </script>

@@ -4,6 +4,7 @@
   "width": 540,
   "height": 400,
   "projection": {"type": "equalEarth"},
+  "background": "#d0fbdb",
   "params": [
     {
       "name": "Year_selection",

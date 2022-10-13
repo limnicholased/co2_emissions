@@ -6,6 +6,7 @@
   },
   "width": 600,
   "height": 400,
+  "background": "#d0fbdb",
   "params": [
     {
       "name": "Year_selection",

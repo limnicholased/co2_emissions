@@ -3,6 +3,7 @@
   "width": 610,
   "height": 350,
   "title": "Average Change in CO2 Production over Time",
+  "background": "#d0fbdb",
   "data": {
     "url": "https://raw.githubusercontent.com/limnicholased/co2_emissions/main/co2_pct_ch.csv"
   },

@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Is Australia Competitively Green?</title>
+
+    <!-- Import Vega & Vega=Lite -->
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+
+    <!-- Import Vega-Embed -->
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+
+    <!-- Import pure.css -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/purecss@2.0.3/build/pure-min.css"
+      integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ"
+      crossorigin="anonymous"
+    />
+
+    <!-- Import CSS File -->
+    <link rel="stylesheet" type="text/css" href="style.css" media="all" />
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="page">
+      <!-- Heading and Introduction-->
+      <div class="pure-g">
+        <div class="pure-u-1-1">
+          <div class="h1">
+            <h1>Is Australia <FONT COLOR="#54ff9e">Competitively Green</FONT> ?</h1>
+          </div>
+          <div class="titlepara">
+            <p>
+              <a class="bold"
+                >Australia is a First World country known for its tropical beaches, lush forests, and incredible wildlife. 
+                With a population size of over 25 million people and being one of the largest economies in the world,
+                Australia is held to a higher standard in its ability to maintain environmental sustainability within its
+                economy and to be a global benchmark of <FONT COLOR="#54ff9e">'greenness'</FONT>.
+                Since First World countries are often regarded as 'wealthier' based on a measure of their Gross Domestic Product (GDP),
+                they are often considered to be in a better position to adopt more eco-friendly practices across their various industries.
+                One metric often prevalent in the conversation of sustainable practices is that of <a class="red">CO2</a> Emissions from energy production.
+                The less <a class="red">CO2</a> by-product an organisation produces, the <FONT COLOR="#54ff9e">'greener'</FONT> that organisation is considered.
+                Likewise, countries with lower national <a class="red">CO2</a> emissions are often regarded as <FONT COLOR="#54ff9e">'greener'</FONT> and more sustainable.
+                With increasing interest towards environmental conservation and deprecation towards non-eco-friendly industry practices, countries around the
+                world are facing mounting pressure to be considered <FONT COLOR="#54ff9e">'competitively green'</FONT>.</a>
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- End of Heading and Introduction-->
+
+      <!-- First Question -->
+      <div class="pure-g">
+        <div class="pure-u-1-1">
+          <div class="h2">
+            <h2>How does Australia's emissions compare to the rest of The World?</h2>
+          </div>
+        </div>
+      </div>
+      <!-- End of First Question -->
+
+      <!-- Block for Visualisation 1 -->
+      <div class="pure-g">
+        <div class="pure-u-1-3">
+          <div class="textcontent">
+            <div class="border">
+            <p style="padding-left: 15px;">
+              Let us take a look at various regions. This map displays the amount of <a class="red">CO2</a> 
+              produced per capita by various countries globally, from 1860 to 2020. 
+            </br></br>Australia's <a class="red">CO2</a> emissions in 2020 was approximately 15.4 megatonnes, 
+              which was 229% times more than the global average for <a class="red">CO2</a> that year.</br></br>
+              Understandably, various other First World nations produce notably greater <a class="red">CO2</a> emissions
+              than the global average.
+            </p>
+            </div>
+          </div>
+        </div>
+        <div class="pure-u-2-3">
+          <div id="map" class="vis-container">
+          </div>
+        </div>
+      </div>
+      <!-- End Block for Visualisation 1-->
+
+    
+
+      <!-- Second Question -->
+      <div class="pure-g">
+        <div class="pure-u-1-1">
+          <div class="h2">
+            <h2>
+              Why <a class="red">CO2</a>? What about other <FONT COLOR="#54ff9e">Greenhouse Gases</FONT>?
+            </h2>
+          </div>
+        </div>
+      </div>
+      <!-- End of Second Question -->
+
+      <!-- Block for Visualisation 2 -->
+      <div class="pure-g">
+        <div class="pure-u-1-3">
+          <div class="textcontent">
+            <div class="border3">
+            <p style="padding-left: 15px;">
+              <FONT COLOR="#54ff9e">Greenhouse Gases</FONT> are gases in the Earth's atmosphere that trap heat.
+              It is largely accepted that these gases are the major causes of <FONT COLOR="#8bb7e3">climate change</FONT>. <br /><br />
+              <FONT COLOR="#54ff9e">Greenhouse Gases</FONT> comprise various gases like <a class="red">Carbon Dioxide (CO2)</a> gas, Methane, Nitrous Oxides (NO2), and Water Vapor, amongst others.<br><br>
+              The pie chart on the right illustrates the top 3 main <FONT COLOR="#54ff9e">Greenhouse Gases</FONT>. We can see that <a class="red">CO2</a> has largely been the biggest contributor to this. 
+            </p>
+            </div>
+          </div>
+        </div>
+        <div class="pure-u-2-3">
+          <div id="ghg_pie_chart" class="vis-box"></div>
+        </div>
+      </div>
+      <!-- End Block for Visualisation 2 -->
+
+      <!-- Block for Visualisation 3 -->
+      <div class="pure-g">
+        <div class="pure-u-1-3">
+          <div class="textcontent">
+            <div class="border4">
+            <p style="padding-left: 15px;">
+              
+              But what's producing <a class="red">CO2</a>? 
+              As seen in our illustration, the primary
+              sources of Australian <a class="red">CO2</a> production are Cement,
+              Coal, Flaring, Gas, and Oil.<br /><br />
+              By scrolling through the various years, we can see that <FONT COLOR="#f38c05">Coal</FONT></a>
+              has long been the major source of our <a class="red">CO2</a> production.<br><br>
+              Looking at 2020 alone, <FONT COLOR="#f38c05">Coal</FONT></a> is responsible for over 40% of Australia's <a class="red">CO2</a> production.
+            </p>
+            </div>
+          </div>
+        </div>
+        <div class="pure-u-2-3">
+          <div id="co2_pie_chart" class="vis-box"></div>
+        </div>
+      </div>
+      <!-- End Block for Visualisation 3-->
+
+      <!-- Fourth Question -->
+      <div class="pure-g">
+        <div class="pure-u-1-1">
+          <div class="h2">
+            <h2>
+              How did we get here? How do we move forward?
+            </h2>
+          </div>
+        </div>
+      </div>
+      <!-- End of Fourth Question -->
+
+      <!-- Block for Visualisation 4 -->
+      <div class="pure-g">
+        <div class="pure-u-1-3">
+          <div class="textcontent">
+            <div class="border5">
+            <p style="padding-left: 15px;">
+              To understand where Australia is heading in its <FONT COLOR="#54ff9e">'green'</FONT> targets, 
+              we must first look into the past to examine how the sources of <a class="red">CO2</a> production have evolved.</br></br> 
+              From the chart on our right, we can see that there has been a tremendous effort to diversify our energy sources over time.
+              <br><br> As Australia gradually transitions away from  fossil fuels like <FONT COLOR="#f38c05">Coal</FONT></a>,
+              in favour of <FONT COLOR="#54ff9e">'greener'</FONT> sources with lower carbon output, we will observe some improvement over time.
+            </p>
+            </div>
+          </div>
+        </div>
+        <div class="pure-u-2-3">
+          <div id="multiple_line_chart" class="vis-box"></div>
+        </div>
+      </div>
+      <!-- End Block for Visualisation 4-->
+
+      <!-- Fifth Question -->
+      <div class="pure-g">
+        <div class="pure-u-1-1">
+          <div class="h2">
+            <h2>
+              Is Reducing our Dependency on <FONT COLOR="#f38c05">Coal</FONT></a> Feasible?
+            </h2>
+          </div>
+        </div>
+      </div>
+      <!-- End of Fifth Question -->
+
+      <!-- Block for Visualisation 5 -->
+      <div class="pure-g">
+        <div class="pure-u-1-3">
+          <div class="textcontent">
+            <div class="border2">
+            <p style="padding-left: 15px;">
+              Let us not forget that fossil fuels like <FONT COLOR="#f38c05">Coal</FONT></a> produces the most <a class="red">CO2</a> for good reason.<br /></br>
+              Burning <FONT COLOR="#f38c05">Coal</FONT></a> produces on average, more energy per unit mass than other sources and is considered one of the simplest
+              natural energy resources.<br /></br>
+              From the figure on the right, we can see that over the last century, 
+              <FONT COLOR="#f38c05">Coal</FONT></a> has long produced at least double the average <a class="red">CO2</a> produced by all sources,
+              which suggests that is also used the in the most.
+            </p>
+            </div>
+          </div>
+        </div>
+        <div class="pure-u-2-3">
+          <div id="bar_chart" class="vis-box"></div>
+        </div>
+      </div>
+      <!-- End Block for Visualisation 5-->
+
+      <!-- Sixth Question -->
+      <div class="pure-g">
+        <div class="pure-u-1-1">
+          <div class="h2">
+            <h2>
+              Are things getting <FONT COLOR="#54ff9e">Better</FONT> or <a class="red">Worse</a>?
+            </h2>
+          </div>
+        </div>
+      </div>
+      <!-- End of Sixth Question-->
+
+      <!-- Block for Visualisation 6-->
+      <div class="pure-g">
+        <div class="pure-u-1-3">
+          <div class="textcontent">
+            <div class="border7">
+            <p style="padding-left: 15px;">
+              Evidently, with mounting global pressure, there has been remarkable effort and improvement by various regions around the world
+              in reducing their <a class="red">CO2</a> emissions. <br><br> 
+              In the figure on the right, we can see that Australia, as part of Oceania,
+              has made been <FONT COLOR="#54ff9e">competitive</FONT> in reducing its <a class="red">CO2</a> emissions over time.
+              This is promising for Australia as it promotes itself as a global ambassador for <FONT COLOR="#54ff9e">'greenness'</FONT>.
+
+            </p>
+            </div>
+          </div>
+        </div>
+        <div class="pure-u-2-3">
+          <div id="heat_map" class="vis-box"></div>
+        </div>
+      </div>
+      <!-- End Block for Visualisation 6-->
+      <div class="pure-g">
+        <div class="pure-u-1-1">
+          <div class=border6>
+          <p style="padding-left: 15px;">This visualisation was created by <FONT COLOR="#8bb7e3">Nicholas Lim</FONT>
+          </br> All data was retrieved from Our World In Data</br><a style="color:white"><a href=https://ourworldindata.org/co2-and-other-greenhouse-gas-emissions> here.</a></a></p>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    <!-- Embed the Vega Lite visualisations -->
+    <script type="text/javascript">
+      var map = "choropleth_map.json";
+      var ghg_pie_chart = "ghg_pie_chart.json";
+      var co2_pie_chart = "co2_pie_chart.json";
+      var multiple_line_chart = "multiple_line_chart.json";
+      var bar_chart = "bar_chart.json";
+      var heat_map = "heat_map.json";
+
+      vegaEmbed("#map", map)
+        .then(function (result) {})
+        .catch(console.error);
+
+      vegaEmbed("#ghg_pie_chart", ghg_pie_chart)
+        .then(function (result) {})
+        .catch(console.error);
+
+      vegaEmbed("#co2_pie_chart", co2_pie_chart)
+        .then(function (result) {})
+        .catch(console.error);
+
+      vegaEmbed("#multiple_line_chart", multiple_line_chart)
+        .then(function (result) {})
+        .catch(console.error);
+
+      vegaEmbed("#bar_chart", bar_chart)
+        .then(function (result) {})
+        .catch(console.error);
+
+      vegaEmbed("#heat_map", heat_map)
+        .then(function (result) {})
+        .catch(console.error);
+    </script>
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script> AOS.init({ duration: 1000 });</script>
+  </body>
+</html>

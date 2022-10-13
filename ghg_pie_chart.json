@@ -1,0 +1,66 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Australian Greenhouse Gas Components from 1860 to 2020",
+  "data": {
+    "url": "https://raw.githubusercontent.com/limnicholased/co2_emissions/main/aus_ghg_components.csv"
+  },
+  "width": 640,
+  "height": 400,
+  "params": [
+    {
+      "name": "Year_selection",
+      "value": 2019,
+      "bind": {
+        "input": "range",
+        "min": 1860,
+        "max": 2020,
+        "step": 1,
+        "name": "Select Year: "
+      }
+    }
+  ],
+  "transform": [{"filter": "datum.year == Year_selection"}],
+  "encoding": {
+    "theta": {
+      "field": "mass",
+      "type": "quantitative",
+      "stack": true,
+      "title": "GHG Mass (Megatonnes)"
+    },
+    "color": {"field": "ghg", "type": "nominal", "title": "Greenhouse Gas"}
+  },
+  "layer": [
+    {"mark": {"type": "arc", "outerRadius": 130, "tooltip": true}},
+    {
+      "mark": {"type": "text", "radius": 150},
+      "encoding": {
+        "text": {"field": "ghg", "type": "nominal"},
+        "color": {
+          "field": "ghg",
+          "type": "nominal",
+          "scale": {
+            "domain": ["Methane", "NO2", "CO2"],
+            "range": ["#E738E6", "#FCB5B8", "#DB4C40"]
+          }
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "dx": -190,
+        "dy": -375,
+        "fill": "red"
+      },
+      "encoding": {
+        "x": {"value": "width"},
+        "y": {"value": "height"},
+        "text": {
+          "value": "CO2 is the largest contributor to Australian greenhouse gas emissions"
+        }
+      }
+    }
+  ],
+  "config": {}
+}

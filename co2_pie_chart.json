@@ -1,0 +1,60 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Australian C02 Production Sources from 1860 to 2020",
+  "data": {
+    "url": "https://raw.githubusercontent.com/limnicholased/co2_emissions/main/aus_co2_sources.csv"
+  },
+  "width": 600,
+  "height": 400,
+  "params": [
+    {
+      "name": "Year_selection",
+      "value": 2020,
+      "bind": {
+        "input": "range",
+        "min": 1860,
+        "max": 2020,
+        "step": 1,
+        "name": "Select Year: "
+      }
+    }
+  ],
+  "transform": [{"filter": "datum.year == Year_selection"}],
+  "encoding": {
+    "theta": {
+      "field": "mass",
+      "type": "quantitative",
+      "stack": true,
+      "title": "CO2 Mass (Megatonnes)"
+    },
+    "color": {
+      "field": "co2_source",
+      "type": "nominal",
+      "title": "CO2 Source (Production)"
+    }
+  },
+  "layer": [
+    {"mark": {"type": "arc", "outerRadius": 130, "tooltip": true}},
+    {
+      "mark": {"type": "text", "radius": 160},
+      "encoding": {"text": {"field": "co2_source", "type": "nominal"}}
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "dx": -160,
+        "dy": -342,
+        "fill": "#f58519"
+      },
+      "encoding": {
+        "x": {"value": "width"},
+        "y": {"value": "height"},
+        "text": {
+          "value": "Coal is Australia's primary contributor of CO2 Production"
+        }
+      }
+    }
+  ],
+  "config": {}
+}

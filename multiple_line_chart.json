@@ -1,0 +1,87 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/limnicholased/co2_emissions/main/aus_co2_sources.csv"
+  },
+  "title": "Australian Sources of CO2 Production from 1860 to 2020",
+  "width": 560,
+  "height": 400,
+  "encoding": {"x": {"field": "year", "type": "temporal", "title": "Year"}},
+  "layer": [
+    {
+      "transform": [{"filter": "datum.mass > 0"}],
+      "encoding": {
+        "color": {
+          "field": "co2_source",
+          "type": "nominal",
+          "title": "CO2 Production Source"
+        },
+        "y": {
+          "field": "mass",
+          "type": "quantitative",
+          "title": "CO2 Produced (Megatonnes)",
+          "axis": {"grid": false}
+        },
+        "x": {"field": "year", "axis": {"grid": false}}
+      },
+      "layer": [
+        {"mark": "line", "clip": true},
+        {
+          "transform": [{"filter": {"param": "hover", "empty": false}}],
+          "mark": "point"
+        }
+      ]
+    },
+    {
+      "transform": [
+        {"pivot": "co2_source", "value": "mass", "groupby": ["year"]}
+      ],
+      "mark": "rule",
+      "encoding": {
+        "opacity": {
+          "condition": {"value": 0.4, "param": "hover", "empty": false},
+          "value": 0
+        },
+        "tooltip": [
+          {"timeUnit": "year", "field": "year", "title": "Year"},
+          {"field": "Cement", "type": "quantitative", "title": "Cement"},
+          {"field": "Coal", "type": "quantitative", "title": "Coal"},
+          {"field": "Flaring", "type": "quantitative", "title": "Flaring"},
+          {"field": "Gas", "type": "quantitative", "title": "Gas"},
+          {"field": "Oil", "type": "quantitative", "title": "Oil"}
+        ]
+      },
+      "params": [
+        {
+          "name": "hover",
+          "select": {
+            "type": "point",
+            "fields": ["year"],
+            "nearest": true,
+            "on": "mouseover",
+            "clear": "mouseout"
+          }
+        }
+      ]
+    },
+    {
+      "mark": {"type": "text", "align": "center", "dx": -230, "dy": -360},
+      "encoding": {
+        "x": {"value": "width"},
+        "y": {"value": "height"},
+        "text": {
+          "value": "2008, Global Financial Crisis, Soaring prices of US Coal"
+        }
+      }
+    },
+    {
+      "mark": {"type": "text", "align": "center", "dx": -300, "dy": -165},
+      "encoding": {
+        "x": {"value": "width"},
+        "y": {"value": "height"},
+        "text": {"value": "1950-1970, Heightened use of diesel locomotives"}
+      }
+    }
+  ],
+  "config": {}
+}

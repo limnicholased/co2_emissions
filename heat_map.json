@@ -1,0 +1,54 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 610,
+  "height": 350,
+  "title": "Average Change in CO2 Production over Time",
+  "data": {
+    "url": "https://raw.githubusercontent.com/limnicholased/co2_emissions/main/co2_pct_ch.csv"
+  },
+  "transform": [{"filter": "datum.year > 1870"}],
+  "params": [
+    {"name": "highlight", "select": "point"},
+    {"name": "grid", "select": "interval", "bind": "scales"},
+    {"name": "hover", "select": {"type": "point", "on": "mouseover"}}
+  ],
+  "mark": {"type": "rect", "strokeWidth": 2},
+  "encoding": {
+    "y": {"field": "continent", "type": "nominal", "title": "Continent"},
+    "x": {"field": "year", "type": "nominal", "title": "Year"},
+    "fill": {
+      "field": "pct_ch",
+      "type": "quantitative",
+      "scale": {"scheme": "redyellowblue", "domain": [-1, 1], "reverse": true},
+      "title": "% Change"
+    },
+    "stroke": {
+      "condition": [
+        {"param": "highlight", "empty": false, "value": "black"},
+        {"param": "hover", "empty": false, "value": "black"}
+      ],
+      "value": null
+    },
+    "strokeWidth": {
+      "condition": [{"param": "hover", "empty": false, "value": 1}],
+      "value": 0
+    },
+    "opacity": {"condition": {"param": "highlight", "value": 1}, "value": 0.5},
+    "order": {"condition": {"param": "highlight", "value": 1}, "value": 0},
+    "tooltip": [
+      {"field": "continent", "type": "nominal", "title": "Continent"},
+      {
+        "field": "pct_ch",
+        "type": "quantitative",
+        "title": "% Change in CO2 Production"
+      },
+      {"field": "year", "type": "nominal", "title": "Year"}
+    ]
+  },
+  "config": {
+    "scale": {"bandPaddingInner": 0, "bandPaddingOuter": 0},
+    "view": {"step": 40},
+    "range": {"ramp": {"scheme": "reds"}},
+    "axis": {"domain": false}
+  }
+}

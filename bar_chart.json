@@ -1,0 +1,126 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "width": 540,
+  "height": 400,
+  "title": "Distribution of Australian C02 Production Sources from 1860 to 2020",
+  "data": {
+    "url": "https://raw.githubusercontent.com/limnicholased/co2_emissions/main/aus_co2_sources.csv"
+  },
+  "params": [
+    {
+      "name": "Year_selection",
+      "value": 2020,
+      "bind": {
+        "input": "range",
+        "min": 1860,
+        "max": 2020,
+        "step": 1,
+        "name": "Select Year: "
+      }
+    }
+  ],
+  "transform": [{"filter": "datum.year == Year_selection"}],
+  "layer": [
+    {
+      "selection": {"brush": {"type": "interval", "encodings": ["x"]}},
+      "mark": "bar",
+      "encoding": {
+        "x": {
+          "field": "co2_source",
+          "type": "ordinal",
+          "title": "CO2 Sources",
+          "axis": {"labelAngle": 0},
+          "sort": {"op": "sum", "field": "mass", "order": "descending"}
+        },
+        "y": {
+          "field": "mass",
+          "type": "quantitative",
+          "title": "Mass of CO2 Produced (Megatonnes)"
+        },
+        "color": {
+          "field": "mass",
+          "type": "quantitative",
+          "scale": {"scheme": "reds"},
+          "title": "CO2 Produced (Megatonnes)"
+        },
+        "tooltip": [
+          {"field": "co2_source", "type": "nominal", "title": "CO2 Source"},
+          {
+            "field": "mass",
+            "type": "quantitative",
+            "title": "Megatonnes of CO2",
+            "format": ".2f"
+          }
+        ],
+        "opacity": {
+          "condition": {"selection": "brush", "value": 1},
+          "value": 0.7
+        }
+      }
+    },
+    {
+      "transform": [{"filter": {"selection": "brush"}}],
+      "mark": "rule",
+      "encoding": {
+        "y": {"aggregate": "mean", "field": "mass", "type": "quantitative"},
+        "color": {"value": "#0370ff"},
+        "size": {"value": 2}
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "dx": -160,
+        "dy": -385,
+        "color": "#0370ff"
+      },
+      "encoding": {
+        "x": {"value": "width"},
+        "y": {"value": "height"},
+        "text": {
+          "value": "Blue line denotes mean CO2 mass produced for that year"
+        }
+      }
+    },
+    {
+      "mark": {"type": "text", "align": "center", "dx": -300, "dy": -350},
+      "encoding": {
+        "x": {"value": "width"},
+        "y": {"value": "height"},
+        "text": {"value": "Fossil fuels like Coal are used as an energy source"}
+      }
+    },
+    {
+      "mark": {"type": "text", "align": "center", "dx": -297, "dy": -340},
+      "encoding": {
+        "x": {"value": "width"},
+        "y": {"value": "height"},
+        "text": {
+          "value": "for nearly everything around us, due to its versatility."
+        }
+      }
+    },
+    {
+      "mark": {"type": "text", "align": "center", "dx": -190, "dy": -225},
+      "encoding": {
+        "x": {"value": "width"},
+        "y": {"value": "height"},
+        "text": {
+          "value": "Fossil fuels like Coal also produce on average, more"
+        }
+      }
+    },
+    {
+      "mark": {"type": "text", "align": "center", "dx": -186, "dy": -215},
+      "encoding": {
+        "x": {"value": "width"},
+        "y": {"value": "height"},
+        "text": {
+          "value": "CO2 per unit mass than various other energy sources."
+        }
+      }
+    }
+  ],
+  "config": {}
+}

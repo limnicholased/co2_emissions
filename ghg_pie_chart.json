@@ -50,8 +50,8 @@
       "mark": {
         "type": "text",
         "align": "center",
-        "dx": -190,
-        "dy": -375,
+        "dx": -305,
+        "dy": -45,
         "fill": "red"
       },
       "encoding": {

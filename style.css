@@ -3,25 +3,19 @@
 }
 h1 {
   text-align: center;
-  font-weight: 300;
   font-size: 55px;
-  margin-top: 10px;
   color: #193117;
 }
 h2 {
-  text-align: left;
+  text-align: center;
   margin-top: 10px;
-  font-size: 20px;
-  color: #2b3e29;
+  font-size: 200px;
+  color: #3e2937;
   font-weight: 300;
   font-size: 40px;
 }
-h3 {
-  color: #2b3e29;
-  font-weight: 300;
-  font-size: 35px;
-}
 p {
+  margin-top: 5px;
   color: white;
 }
 body {
@@ -52,7 +46,6 @@ body {
 .pure-g {
   margin-bottom: 25px;
 }
-
 .border6 a {
   color: white;
   text-decoration: none;
@@ -66,25 +59,6 @@ body {
   font-size: 25px;
   text-align: justify;
 }
-#map {
-  margin-left: 30px;
-}
-#heat_map {
-  margin-left: 15px;
-}
-#ghg_pie_chart {
-  margin: 15px;
-  padding-right: 19px;
-}
-#bar_chart {
-  margin-left: 13.5px;
-}
-#co2_pie_chart {
-  margin-left: 15px;
-}
-#multiple_line_chart {
-  margin-left: 17px;
-}
 .green {
   color: #9ee08b;
 }
@@ -97,30 +71,27 @@ body {
 .pure-u-2-3 {
   color: white;
 }
-.yellow {
-  color: #D2AB99;
-}
 .border {
   border-left: 3px solid #F7DD72;
-  height: 450px;
+  height: 470px;
 }
 .border2 {
   border-left: 3px solid #F7DD72;
-  height: 420px;
+  height: 495px;
 }
 .border3 {
   border-left: 3px solid #F7DD72;
-  height: 478px;
+  height: 485px;
 }
 
 .border4 {
   border-left: 3px solid #F7DD72;
-  height: 480px;
+  height: 440px;
 }
 
 .border5 {
   border-left: 3px solid #F7DD72;
-  height: 475px;
+  height: 490px;
 }
 
 .border6 {
@@ -129,5 +100,5 @@ body {
 }
 .border7 {
   border-left: 3px solid #F7DD72;
-  height: 390px;
+  height: 440px;
 }

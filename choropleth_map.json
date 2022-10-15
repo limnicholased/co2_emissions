@@ -1,8 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": "Global CO2 Emissions",
-  "width": 540,
-  "height": 400,
+  "width": 570,
+  "height": 430,
   "projection": {"type": "equalEarth"},
   "background": "#d0fbdb",
   "params": [

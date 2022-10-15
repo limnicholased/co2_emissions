@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
-  "width": 540,
+  "width": 545,
   "height": 400,
   "title": "Distribution of Australian C02 Production Sources from 1860 to 2020",
   "data": {

@@ -4,7 +4,7 @@
     "url": "https://raw.githubusercontent.com/limnicholased/co2_emissions/main/aus_co2_sources.csv"
   },
   "title": "Australian Sources of CO2 Production from 1860 to 2020",
-  "width": 560,
+  "width": 568,
   "height": 400,
   "background": "#d0fbdb",
   "encoding": {"x": {"field": "year", "type": "temporal", "title": "Year"}},

@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 610,
+  "width": 617,
   "height": 350,
   "title": "Average Change in CO2 Production over Time",
   "background": "#d0fbdb",
